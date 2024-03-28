@@ -1,4 +1,5 @@
 import pandas as pd
+from sklearn import preprocessing
 from sklearn.linear_model import LogisticRegression
 from sklearn.model_selection import cross_val_score
 
@@ -10,10 +11,11 @@ df = pd.read_csv('Data/train.csv').to_numpy()
 X = df[:, :-1]
 Y = df[:, -1]
 
-# Preprocess data, X Maybe
+# Preprocess data
+X = preprocessing.StandardScaler().fit_transform(X)
 
 # Logistic Regression Model
-lrm = LogisticRegression(max_iter=1000, random_state=RANDOM_STATE)
+lrm = LogisticRegression(max_iter=1000, random_state=RANDOM_STATE, C=5, penalty='l2')
 
 # k-fold cross-validation
 k = 10

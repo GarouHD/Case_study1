@@ -1,4 +1,5 @@
 import pandas as pd
+from sklearn import preprocessing
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.model_selection import cross_val_score
 
@@ -10,10 +11,11 @@ df = pd.read_csv('Data/train.csv').to_numpy()
 X = df[:, :-1]
 Y = df[:, -1]
 
-# Preprocess data, X Maybe
+# Preprocess data
+X = preprocessing.StandardScaler().fit_transform(X)
 
 # Decision Tree Model
-dt = DecisionTreeClassifier(random_state=RANDOM_STATE)
+dt = DecisionTreeClassifier(random_state=RANDOM_STATE, criterion='entropy', max_depth=22)
 
 # k-fold cross-validation
 k = 10
