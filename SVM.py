@@ -16,7 +16,7 @@ Y = df[:, -1]
 
 # Logistic Regression Model
 svm = SVC(random_state=RANDOM_STATE, C=1000, gamma=0.01, kernel='rbf')
-#svm = SVC(random_state=RANDOM_STATE)  # Has higher accuracy when data is preprocessed
+# svm = SVC(random_state=RANDOM_STATE)  # Has higher accuracy when data is preprocessed
 
 # k-fold cross-validation
 k = 10
